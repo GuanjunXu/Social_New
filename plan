@@ -1,0 +1,27 @@
+[tests]
+script.hdrcapture.CameraTest.testCapturePictureWithFDOn = 1
+script.hdrcapture.CameraTest.testCapturePictureWithFDOff = 1
+script.hdrcapture.CameraTest.testCapturePictureWithPictureSizeStandard = 1
+script.hdrcapture.CameraTest.testCaptureWithPictureSizeWidesreen = 1
+script.hdrcapture.CameraTest.testCapturepictureWithGeoLocationOn = 1
+script.hdrcapture.CameraTest.testCapturepictureWithGeoLocationOff = 1
+script.hdrcapture.CameraTest.testCapturePictureWithSelfTimerOff = 1
+script.hdrcapture.CameraTest.testCapturePictureWithThreeSec = 1
+script.hdrcapture.CameraTest.testCapturePictureWithFiveSec = 1
+script.hdrcapture.CameraTest.testCapturePictureWithTenSec = 1
+
+script.videocapture.CameraTest.testRecordVideoWithFlashOn = 1
+script.videocapture.CameraTest.testRecordVideoWithFlashOff = 1
+script.videocapture.CameraTest.testRecordVideoWithVideoSizeFHD = 1
+script.videocapture.CameraTest.testRecordVideoWithVideoSizeHD = 1
+script.videocapture.CameraTest.testRecordVideoWithVideoSizeSD = 1
+script.videocapture.CameraTest.testRecordVideoCaptureVideoWithExposureAuto = 1
+script.videocapture.CameraTest.testRecordVideoCaptureVideoWithExposure1 = 1
+script.videocapture.CameraTest.testRecordVideoCaptureVideoWithExposure2 = 1
+script.videocapture.CameraTest.testRecordVideoCaptureVideoWithExposureRed1 = 1
+script.videocapture.CameraTest.testRecordVideoCaptureVideoWithExposureRed2 = 1
+script.videocapture.CameraTest.testRecordVideoCaptureVideoWithBalanceAuto = 1
+script.videocapture.CameraTest.testRecordVideoCaptureVideoWithBalanceIncandescent = 1
+script.videocapture.CameraTest.testRecordVideoCaptureVideoWithBalanceDaylight = 1
+script.videocapture.CameraTest.testRecordVideoCaptureVideoWithBalanceFluorescent = 1
+script.videocapture.CameraTest.testRecordVideoCaptureVideoWithBalanceCloudy = 1
