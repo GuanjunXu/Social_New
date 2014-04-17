@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # coding:utf-8
 
-from uiautomatorplug.android import device as d
+from devicewrapper.android import device as d
 import unittest
 import commands
 import re
