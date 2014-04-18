@@ -90,7 +90,7 @@ class CameraTest(unittest.TestCase):
                 4.Exit  activity
         '''
         SM.setCameraSetting('video','flash','on')
-        assert AD.cmd('cat',FLASH_STATE).find('on')
+        assert bool(AD.cmd('cat',FLASH_STATE).find('on')+1)
         self._takeVideoAndCheckCount(30,2)
 
     def testRecordVideoWithFlashOff(self):
@@ -103,7 +103,7 @@ class CameraTest(unittest.TestCase):
                 4.Exit  activity
         '''
         SM.setCameraSetting('video','flash','off')
-        assert AD.cmd('cat',FLASH_STATE).find('off')
+        assert bool(AD.cmd('cat',FLASH_STATE).find('off')+1)
         self._takeVideoAndCheckCount(30,2)
 
     def testRecordVideoCaptureVideoWithBalanceAuto(self):
@@ -116,7 +116,7 @@ class CameraTest(unittest.TestCase):
                 4.Exit  activity
         '''
         SM.setCameraSetting('video',5,5)
-        assert AD.cmd('cat',WBALANCE_STATE).find('auto')
+        assert bool(AD.cmd('cat',WBALANCE_STATE).find('auto')+1)
         self._takeVideoAndCheckCount(30,2)
 
     def testRecordVideoCaptureVideoWithBalanceIncandescent(self):
@@ -129,7 +129,7 @@ class CameraTest(unittest.TestCase):
                 4.Exit  activity
         '''
         SM.setCameraSetting('video',5,4)
-        assert AD.cmd('cat',WBALANCE_STATE).find('incandescent')
+        assert bool(AD.cmd('cat',WBALANCE_STATE).find('incandescent')+1)
         self._takeVideoAndCheckCount(30,2)
 
     def testRecordVideoCaptureVideoWithBalanceDaylight(self):
@@ -142,7 +142,7 @@ class CameraTest(unittest.TestCase):
                 4.Exit  activity
         '''
         SM.setCameraSetting('video',5,3)
-        assert AD.cmd('cat',WBALANCE_STATE).find('incandescent')
+        assert bool(AD.cmd('cat',WBALANCE_STATE).find('incandescent')+1)
         self._takeVideoAndCheckCount(30,2)
 
     def testRecordVideoCaptureVideoWithBalanceFluorescent(self):
@@ -155,7 +155,7 @@ class CameraTest(unittest.TestCase):
                 4.Exit  activity
         '''
         SM.setCameraSetting('video',5,2)
-        assert AD.cmd('cat',WBALANCE_STATE).find('fluorescent')
+        assert bool(AD.cmd('cat',WBALANCE_STATE).find('fluorescent')+1)
         self._takeVideoAndCheckCount(30,2)
 
     def testRecordVideoCaptureVideoWithBalanceCloudy(self):
@@ -168,7 +168,7 @@ class CameraTest(unittest.TestCase):
                 4.Exit  activity
         '''
         SM.setCameraSetting('video',5,1)
-        assert AD.cmd('cat',WBALANCE_STATE).find('cloudy')
+        assert bool(AD.cmd('cat',WBALANCE_STATE).find('cloudy')+1)
         self._takeVideoAndCheckCount(30,2)
 
     def testRecordVideoCaptureVideoWithExposureAuto(self):
@@ -182,7 +182,7 @@ class CameraTest(unittest.TestCase):
                 5.Exit  activity
         '''
         SM.setCameraSetting('video',4,3)
-        assert AD.cmd('cat',EXPOSURE_STATE).find('0')
+        assert bool(AD.cmd('cat',EXPOSURE_STATE).find('0')+1)
         self._takeVideoAndCheckCount(30,2)
 
     def testRecordVideoCaptureVideoWithExposure1(self):
@@ -196,7 +196,7 @@ class CameraTest(unittest.TestCase):
                 5.Exit  activity
         '''
         SM.setCameraSetting('video',4,4)
-        assert AD.cmd('cat',EXPOSURE_STATE).find('3')
+        assert bool(AD.cmd('cat',EXPOSURE_STATE).find('3')+1)
         self._takeVideoAndCheckCount(30,2)
 
     def testRecordVideoCaptureVideoWithExposure2(self):
@@ -210,7 +210,7 @@ class CameraTest(unittest.TestCase):
                 5.Exit  activity
         '''
         SM.setCameraSetting('video',4,5)
-        assert AD.cmd('cat',EXPOSURE_STATE).find('6')
+        assert bool(AD.cmd('cat',EXPOSURE_STATE).find('6')+1)
         self._takeVideoAndCheckCount(30,2)
 
     def testRecordVideoCaptureVideoWithExposureRed1(self):
@@ -224,7 +224,7 @@ class CameraTest(unittest.TestCase):
                 5.Exit  activity
         '''
         SM.setCameraSetting('video',4,2)
-        assert AD.cmd('cat',EXPOSURE_STATE).find('-3')
+        assert bool(AD.cmd('cat',EXPOSURE_STATE).find('-3')+1)
         self._takeVideoAndCheckCount(30,2)
 
     def testRecordVideoCaptureVideoWithExposureRed2(self):
@@ -238,7 +238,7 @@ class CameraTest(unittest.TestCase):
                 5.Exit  activity
         '''
         SM.setCameraSetting('video',4,1)
-        assert AD.cmd('cat',EXPOSURE_STATE).find('-6')
+        assert bool(AD.cmd('cat',EXPOSURE_STATE).find('-6')+1)
         self._takeVideoAndCheckCount(30,2)
 
     def testRecordVideoCaptureVideoWithHSSize(self):
@@ -252,8 +252,8 @@ class CameraTest(unittest.TestCase):
         '''
         SM.setCameraSetting('video',3,3)
         # Need two check point due to the same value for video size when set HS/HD
-        assert AD.cmd('cat',VIDEOSIZE_STATE).find('5')
-        assert AD.cmd('cat',PATH_0_0XML + ' | grep enable-hightspeed').find('true')
+        assert bool(AD.cmd('cat',VIDEOSIZE_STATE).find('5')+1)
+        assert bool(AD.cmd('cat',PATH_0_0XML + ' | grep enable-hightspeed').find('true')+1)
         self._takeVideoAndCheckCount(30,2)
 
     def testRecordVideoCaptureVideoWithHDSize(self):
@@ -267,8 +267,8 @@ class CameraTest(unittest.TestCase):
         '''
         SM.setCameraSetting('video',3,2)
         # Need two check point due to the same value for video size when set HS/HD
-        assert AD.cmd('cat',VIDEOSIZE_STATE).find('5')
-        assert AD.cmd('cat',PATH_0_0XML + ' | grep enable-hightspeed').find('false')
+        assert bool(AD.cmd('cat',VIDEOSIZE_STATE).find('5')+1)
+        assert bool(AD.cmd('cat',PATH_0_0XML + ' | grep enable-hightspeed').find('false')+1)
         self._takeVideoAndCheckCount(30,2)
 
     def testRecordVideoCaptureVideoWithSDSize(self):
@@ -281,8 +281,8 @@ class CameraTest(unittest.TestCase):
                 4.Exit  activity 
         '''
         SM.setCameraSetting('video',3,1)
-        assert AD.cmd('cat',VIDEOSIZE_STATE).find('4')
-        #assert AD.cmd('cat',PATH_0_0XML + ' | grep enable-hightspeed').find('false')
+        assert bool(AD.cmd('cat',VIDEOSIZE_STATE).find('4')+1)
+        #assert bool(AD.cmd('cat',PATH_0_0XML + ' | grep enable-hightspeed').find('false')
         self._takeVideoAndCheckCount(30,2)
 
     def testRecordVideoCaptureVideoWithFHDSize(self):
@@ -296,8 +296,8 @@ class CameraTest(unittest.TestCase):
         '''
         SM.setCameraSetting('video',3,4)
         # Need two check point due to the same value for video size when set FHD/FHS
-        assert AD.cmd('cat',VIDEOSIZE_STATE).find('6')
-        assert AD.cmd('cat',PATH_0_0XML + ' | grep enable-hightspeed').find('false')
+        assert bool(AD.cmd('cat',VIDEOSIZE_STATE).find('6')+1)
+        assert bool(AD.cmd('cat',PATH_0_0XML + ' | grep enable-hightspeed').find('false')+1)
         self._takeVideoAndCheckCount(30,2)
 
     def testRecordVideoCaptureVideoWithFHSSize(self):
@@ -311,8 +311,8 @@ class CameraTest(unittest.TestCase):
         '''
         SM.setCameraSetting('video',3,5)
         # Need two check point due to the same value for video size when set FHD/FHS
-        assert AD.cmd('cat',VIDEOSIZE_STATE).find('6')
-        assert AD.cmd('cat',PATH_0_0XML + ' | grep enable-hightspeed').find('true')
+        assert bool(AD.cmd('cat',VIDEOSIZE_STATE).find('6')+1)
+        assert bool(AD.cmd('cat',PATH_0_0XML + ' | grep enable-hightspeed').find('true')+1)
         self._takeVideoAndCheckCount(30,2)
 
     def testRecordVideoWithGeoLocationOn(self):
@@ -325,7 +325,7 @@ class CameraTest(unittest.TestCase):
                 4.Exit  activity 
         '''
         SM.setCameraSetting('video',2,2)
-        assert AD.cmd('cat',GEO_STATE).find('on')
+        assert bool(AD.cmd('cat',GEO_STATE).find('on')+1)
         self._takeVideoAndCheckCount(30,2)
 
     def testRecordVideoWithGeoLocationOff(self):
@@ -338,7 +338,7 @@ class CameraTest(unittest.TestCase):
                 4.Exit  activity 
         '''
         SM.setCameraSetting('video',2,1)
-        assert AD.cmd('cat',GEO_STATE).find('off')
+        assert bool(AD.cmd('cat',GEO_STATE).find('off')+1)
         self._takeVideoAndCheckCount(30,2)
 
     def testRearFaceRecordVideoWithGeoLocationOn(self):
@@ -353,7 +353,7 @@ class CameraTest(unittest.TestCase):
         '''
         TB.switchBackOrFrontCamera('front')
         SM.setCameraSetting('fvideo',1,1)
-        assert AD.cmd('cat',GEO_STATE).find('on')
+        assert bool(AD.cmd('cat',GEO_STATE).find('on')+1)
         self._takeVideoAndCheckCount(30,2)
 
     def testRearFaceRecordVideoWithGeoLocationOff(self):
@@ -368,7 +368,7 @@ class CameraTest(unittest.TestCase):
         '''
         TB.switchBackOrFrontCamera('front')
         SM.setCameraSetting('fvideo',1,2)
-        assert AD.cmd('cat',GEO_STATE).find('off')
+        assert bool(AD.cmd('cat',GEO_STATE).find('off')+1)
         self._takeVideoAndCheckCount(30,2)
 
     def testRecordVideoWithCaptureImage(self):
