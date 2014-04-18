@@ -35,7 +35,7 @@ FLASH_SETTING       = ['off','on','auto']
 
 
 ##################################################
-#     Settings in each mode                      #
+#            Settings in each mode               #
 ##################################################
 SINGLE_SETTING      = ['testcamera','hits','location','picturesize','scencesmode','exposure','whitebalance','iso','delay']
 SMILE_SETTING       = ['location','picturesize','sencesmode','exposure','whitebalance','iso']
