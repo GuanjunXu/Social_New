@@ -32,6 +32,7 @@ script.videocapture.CameraTest.testRecordVideoWithGeoLocationOff = 1
 script.videocapture.CameraTest.testRearFaceRecordVideoWithGeoLocationOn = 1
 script.videocapture.CameraTest.testRearFaceRecordVideoWithGeoLocationOff = 1
 script.videocapture.CameraTest.testRecordVideoWithCaptureImage = 1
+<<<<<<< HEAD
 
 script.burstfastcapture.CameraTest.testCaptureWithExposureAuto = 1
 script.burstfastcapture.CameraTest.testCaptureWithExposurePlugOne = 1
@@ -78,3 +79,5 @@ script.burstslowcapture.CameraTest.testCapturepictureWithGeoLocationOff = 1
 
 
 
+=======
+>>>>>>> bc599f67e9156559532eb4a1f2da7aa6890d5c66
