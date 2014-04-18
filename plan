@@ -27,3 +27,8 @@ script.videocapture.CameraTest.testRecordVideoCaptureVideoWithBalanceIncandescen
 script.videocapture.CameraTest.testRecordVideoCaptureVideoWithBalanceDaylight = 1
 script.videocapture.CameraTest.testRecordVideoCaptureVideoWithBalanceFluorescent = 1
 script.videocapture.CameraTest.testRecordVideoCaptureVideoWithBalanceCloudy = 1
+script.videocapture.CameraTest.testRecordVideoWithGeoLocationOn = 1
+script.videocapture.CameraTest.testRecordVideoWithGeoLocationOff = 1
+script.videocapture.CameraTest.testRearFaceRecordVideoWithGeoLocationOn = 1
+script.videocapture.CameraTest.testRearFaceRecordVideoWithGeoLocationOff = 1
+script.videocapture.CameraTest.testRecordVideoWithCaptureImage = 1
