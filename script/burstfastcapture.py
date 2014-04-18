@@ -90,7 +90,7 @@ class CameraTest(unittest.TestCase):
                 4.Exit  activity
         '''
         SM.setCameraSetting('burst',4,3)
-        assert AD.cmd('cat',EXPOSURE_STATE).find('0')
+        assert bool(AD.cmd('cat',EXPOSURE_STATE).find('0')+1)
         self._captureAndCheckPicCount('single',5)
 
     def testCaptureWithExposurePlugOne(self):
@@ -103,7 +103,7 @@ class CameraTest(unittest.TestCase):
                 4.Exit  activity
         '''
         SM.setCameraSetting('burst',4,4)
-        assert AD.cmd('cat',EXPOSURE_STATE).find('3')
+        assert bool(AD.cmd('cat',EXPOSURE_STATE).find('3')+1)
         self._captureAndCheckPicCount('single',5)
 
     def testCaptureWithExposurePlugTwo(self):
@@ -116,7 +116,7 @@ class CameraTest(unittest.TestCase):
                 4.Exit  activity
         '''
         SM.setCameraSetting('burst',4,5)
-        assert AD.cmd('cat',EXPOSURE_STATE).find('6')
+        assert bool(AD.cmd('cat',EXPOSURE_STATE).find('6')+1)
         self._captureAndCheckPicCount('single',5)
 
     def testCaptureWithExposureRedOne(self):
@@ -129,7 +129,7 @@ class CameraTest(unittest.TestCase):
                 4.Exit  activity
         '''
         SM.setCameraSetting('burst',4,2)
-        assert AD.cmd('cat',EXPOSURE_STATE).find('-3')
+        assert bool(AD.cmd('cat',EXPOSURE_STATE).find('-3')+1)
         self._captureAndCheckPicCount('single',5)
 
     def testCaptureWithExposureRedTwo(self):
@@ -142,7 +142,7 @@ class CameraTest(unittest.TestCase):
                 4.Exit  activity
         '''
         SM.setCameraSetting('burst',4,1)
-        assert AD.cmd('cat',EXPOSURE_STATE).find('-6')
+        assert bool(AD.cmd('cat',EXPOSURE_STATE).find('-6')+1)
         self._captureAndCheckPicCount('single',5)
 
     def testCapturePictureWithScenesAuto(self):
@@ -155,7 +155,7 @@ class CameraTest(unittest.TestCase):
                 4.Exit  activity
         '''
         SM.setCameraSetting('burst',3,7)
-        assert AD.cmd('cat',SCENE_STATE).find('auto')
+        assert bool(AD.cmd('cat',SCENE_STATE).find('auto')+1)
         self._captureAndCheckPicCount('single',5)
 
     def testCapturePictureWithScenesSports(self):
@@ -168,7 +168,7 @@ class CameraTest(unittest.TestCase):
                 4.Exit  activity
         '''
         SM.setCameraSetting('burst',3,6)
-        assert AD.cmd('cat',SCENE_STATE).find('sports')
+        assert bool(AD.cmd('cat',SCENE_STATE).find('sports')+1)
         self._captureAndCheckPicCount('single',5)
 
     def testCapturePictureWithScenesNight(self):
@@ -181,7 +181,7 @@ class CameraTest(unittest.TestCase):
                 4.Exit  activity
         '''
         SM.setCameraSetting('burst',3,5)
-        assert AD.cmd('cat',SCENE_STATE).find('night')
+        assert bool(AD.cmd('cat',SCENE_STATE).find('night')+1)
         self._captureAndCheckPicCount('single',5)
 
     def testCapturePictureWithScenesLandscape(self):
@@ -194,7 +194,7 @@ class CameraTest(unittest.TestCase):
                 4.Exit  activity
         '''
         SM.setCameraSetting('burst',3,4)
-        assert AD.cmd('cat',SCENE_STATE).find('landscape')
+        assert bool(AD.cmd('cat',SCENE_STATE).find('landscape')+1)
         self._captureAndCheckPicCount('single',5)
 
     def testCapturePictureWithScenesPortrait(self):
@@ -207,7 +207,7 @@ class CameraTest(unittest.TestCase):
                 4.Exit  activity
         '''
         SM.setCameraSetting('burst',3,3)
-        assert AD.cmd('cat',SCENE_STATE).find('portrait')
+        assert bool(AD.cmd('cat',SCENE_STATE).find('portrait')+1)
         self._captureAndCheckPicCount('single',5)
 
     def testCapturePictureWithScenesNightPortrait(self):
@@ -220,7 +220,7 @@ class CameraTest(unittest.TestCase):
                 4.Exit  activity
         '''
         SM.setCameraSetting('burst',3,2)
-        assert AD.cmd('cat',SCENE_STATE).find('night-portrait')
+        assert bool(AD.cmd('cat',SCENE_STATE).find('night-portrait')+1)
         self._captureAndCheckPicCount('single',5)
 
     def testCapturePictureWithScenesBarcode(self):
@@ -233,7 +233,7 @@ class CameraTest(unittest.TestCase):
                 4.Exit  activity
         '''
         SM.setCameraSetting('burst',3,1)
-        assert AD.cmd('cat',SCENE_STATE).find('barcode')
+        assert bool(AD.cmd('cat',SCENE_STATE).find('barcode')+1)
         self._captureAndCheckPicCount('single',5)
 
     def testCapturePictureWithSizeWidescreen(self):
@@ -246,7 +246,7 @@ class CameraTest(unittest.TestCase):
                 4.Exit  activity
         '''
         SM.setCameraSetting('burst',2,1)
-        assert AD.cmd('cat',SCENE_STATE).find('WideScreen')
+        assert bool(AD.cmd('cat',SCENE_STATE).find('WideScreen')+1)
         self._captureAndCheckPicCount('single',5)
 
     def testCapturePictureWithSizeStandard(self):
@@ -259,7 +259,7 @@ class CameraTest(unittest.TestCase):
                 4.Exit  activity
         '''
         SM.setCameraSetting('burst',2,2)
-        assert AD.cmd('cat',SCENE_STATE).find('StandardScreen')
+        assert bool(AD.cmd('cat',SCENE_STATE).find('StandardScreen')+1)
         self._captureAndCheckPicCount('single',5)
     
     def testCapturepictureWithGeoLocationOn(self):
@@ -272,7 +272,7 @@ class CameraTest(unittest.TestCase):
                 4.Exit  activity
         '''
         SM.setCameraSetting('burst',1,2)
-        assert AD.cmd('cat',SCENE_STATE).find('on')
+        assert bool(AD.cmd('cat',SCENE_STATE).find('on')+1)
         self._captureAndCheckPicCount('single',5)
 
     def testCapturepictureWithGeoLocationOff(self):
@@ -285,7 +285,7 @@ class CameraTest(unittest.TestCase):
                 4.Exit  activity
         '''
         SM.setCameraSetting('burst',1,1)
-        assert AD.cmd('cat',SCENE_STATE).find('off')
+        assert bool(AD.cmd('cat',SCENE_STATE).find('off')+1)
         self._captureAndCheckPicCount('single',5)
 
     def _captureAndCheckPicCount(self,capturemode,delaytime):
@@ -293,7 +293,7 @@ class CameraTest(unittest.TestCase):
         TB.takePicture(capturemode)
         time.sleep(delaytime) #Sleep a few seconds for file saving
         afterNo = AD.cmd('ls','/sdcard/DCIM/100ANDRO') #Get count after taking picture
-        if beforeNo != afterNo - 1: #If the count does not raise up after capturing, case failed
+        if beforeNo != afterNo - 10: #If the count does not raise up after capturing, case failed
             self.fail('Taking picture failed!')
 
     def _launchCamera(self):
