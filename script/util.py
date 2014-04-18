@@ -187,10 +187,10 @@ class SetMode():
         d(resourceId = MODE_LIST_BUTTON).click.wait()
         if mode == 'burstslow':
             d(resourceId = MODE_ID[mode]).click.wait()
-            d(resourceId = MODE_ID[mode] , text = 'SLOW'),click.wait()
+            d(text = 'SLOW'),click.wait()
         elif mode == 'burstfast':
             d(resourceId = MODE_ID[mode]).click.wait()
-            d(resourceId = MODE_ID[mode] , text = 'FAST').click()          
+            d(text = 'FAST').click()          
         else:
             d(resourceId = MODE_ID[mode]).click.wait()
 
