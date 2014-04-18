@@ -44,6 +44,8 @@ VIDEO_SETTING       = ['testcamera','location','videosize','exposure','whitebala
 BURST_SETTING       = ['location','picturesize','sencesmode','exposure']
 PERFECTSHOT_SETTING = ['location','scencesmode','exposure']
 PANORAMA_SETTING    = ['location','exposure','iso']
+SINGLE_SETTING_FRONT= ['location']
+VIDEO_SETTING_FRONT = ['location']
 
 
 MODE = {'single':SINGLE_SETTING,
@@ -52,7 +54,9 @@ MODE = {'single':SINGLE_SETTING,
         'video':VIDEO_SETTING,
         'burst':BURST_SETTING,
         'perfectshot':PERFECTSHOT_SETTING,
-        'panorama':PANORAMA_SETTING
+        'panorama':PANORAMA_SETTING,
+        'fsingle':SINGLE_SETTING_FRONT,
+        'fvideo':VIDEO_SETTING_FRONT
         }
 
 
@@ -181,7 +185,14 @@ class SetMode():
     
     def switchcamera(self,mode):
         d(resourceId = MODE_LIST_BUTTON).click.wait()
-        d(resourceId = MODE_ID[mode]).click.wait()
+        if mode == 'burstslow':
+            d(resourceId = MODE_ID[mode]).click.wait()
+            d(resourceId = MODE_ID[mode] , text = 'SLOW'),click.wait()
+        elif mode == 'burstfast':
+            d(resourceId = MODE_ID[mode]).click.wait()
+            d(resourceId = MODE_ID[mode] , text = 'FAST').click()          
+        else:
+            d(resourceId = MODE_ID[mode]).click.wait()
 
 
     def _setFlashMode(self,option):
@@ -261,11 +272,14 @@ class TouchButton():
 
 
 
-    def takeVideo(self,status):
+    def takeVideo(self,status,capturetimes=0):
         # Start record video
         d(resourceId = CPTUREBUTTON_RESOURCEID).click.wait() 
-        # Set recording time
-        time.sleep(status - 2)
+        for i in range(0,capturetimes):
+            #Tap on the center of the screen to capture image during taking video
+            d(resourceId = 'com.intel.camera22:id/camera_preview').click.wait()
+        # Set recording time, every capturing during record video takes about 3s
+        time.sleep(status - capturetimes*3 -2)
         # Stop record video
         d(resourceId = CPTUREBUTTON_RESOURCEID).click.wait() 
         return True
@@ -288,13 +302,14 @@ class TouchButton():
             currentstatus = commands.getoutput(CAMERA_ID)
             # check the result
             if currentstatus.find(camerastatus.get(status)) != -1:
-                print ('set camera is '+status)
+                #print ('set camera is '+status)
                 return True
             else:
-                print ('set camera is '+status+' fail')
+                #print ('set camera is '+status+' fail')
                 return False
         else:
-            print('Current camera is ' + status)
+            #print('Current camera is ' + status)
+            pass
 
 if __name__ == '__main__':
     a = Adb()

@@ -12,9 +12,11 @@ script.hdrcapture.CameraTest.testCapturePictureWithTenSec = 1
 
 script.videocapture.CameraTest.testRecordVideoWithFlashOn = 1
 script.videocapture.CameraTest.testRecordVideoWithFlashOff = 1
-script.videocapture.CameraTest.testRecordVideoWithVideoSizeFHD = 1
-script.videocapture.CameraTest.testRecordVideoWithVideoSizeHD = 1
-script.videocapture.CameraTest.testRecordVideoWithVideoSizeSD = 1
+script.videocapture.CameraTest.testRecordVideoCaptureVideoWithHSSize = 1
+script.videocapture.CameraTest.testRecordVideoCaptureVideoWithHDSize = 1
+script.videocapture.CameraTest.testRecordVideoCaptureVideoWithSDSize = 1
+script.videocapture.CameraTest.testRecordVideoCaptureVideoWithFHDSize = 1
+script.videocapture.CameraTest.testRecordVideoCaptureVideoWithFHSSize = 1
 script.videocapture.CameraTest.testRecordVideoCaptureVideoWithExposureAuto = 1
 script.videocapture.CameraTest.testRecordVideoCaptureVideoWithExposure1 = 1
 script.videocapture.CameraTest.testRecordVideoCaptureVideoWithExposure2 = 1
@@ -25,3 +27,54 @@ script.videocapture.CameraTest.testRecordVideoCaptureVideoWithBalanceIncandescen
 script.videocapture.CameraTest.testRecordVideoCaptureVideoWithBalanceDaylight = 1
 script.videocapture.CameraTest.testRecordVideoCaptureVideoWithBalanceFluorescent = 1
 script.videocapture.CameraTest.testRecordVideoCaptureVideoWithBalanceCloudy = 1
+script.videocapture.CameraTest.testRecordVideoWithGeoLocationOn = 1
+script.videocapture.CameraTest.testRecordVideoWithGeoLocationOff = 1
+script.videocapture.CameraTest.testRearFaceRecordVideoWithGeoLocationOn = 1
+script.videocapture.CameraTest.testRearFaceRecordVideoWithGeoLocationOff = 1
+script.videocapture.CameraTest.testRecordVideoWithCaptureImage = 1
+
+script.burstfastcapture.CameraTest.testCaptureWithExposureAuto = 1
+script.burstfastcapture.CameraTest.testCaptureWithExposurePlugOne = 1
+script.burstfastcapture.CameraTest.testCaptureWithExposurePlugTwo = 1
+script.burstfastcapture.CameraTest.testCaptureWithExposureRedOne = 1
+script.burstfastcapture.CameraTest.testCaptureWithExposureRedTwo = 1
+script.burstfastcapture.CameraTest.testCapturePictureWithScenesAuto = 1
+script.burstfastcapture.CameraTest.testCapturePictureWithScenesSports = 1
+script.burstfastcapture.CameraTest.testCapturePictureWithScenesNight = 1
+script.burstfastcapture.CameraTest.testCapturePictureWithScenesLandscape = 1
+script.burstfastcapture.CameraTest.testCapturePictureWithScenesPortrait = 1
+script.burstfastcapture.CameraTest.testCapturePictureWithScenesNightPortrait = 1
+script.burstfastcapture.CameraTest.testCapturePictureWithScenesBarcode = 1
+script.burstfastcapture.CameraTest.testCapturePictureWithSizeWidescreen = 1
+script.burstfastcapture.CameraTest.testCapturePictureWithSizeStandard = 1
+script.burstfastcapture.CameraTest.testCapturepictureWithGeoLocationOn = 1
+script.burstfastcapture.CameraTest.testCapturepictureWithGeoLocationOff = 1
+
+script.burstslowcapture.CameraTest.testCaptureWithExposureAuto = 1
+script.burstslowcapture.CameraTest.testCaptureWithExposurePlugOne = 1
+script.burstslowcapture.CameraTest.testCaptureWithExposurePlugTwo = 1
+script.burstslowcapture.CameraTest.testCaptureWithExposureRedOne = 1
+script.burstslowcapture.CameraTest.testCaptureWithExposureRedTwo = 1
+script.burstslowcapture.CameraTest.testCapturePictureWithScenesAuto = 1
+script.burstslowcapture.CameraTest.testCapturePictureWithScenesSports = 1
+script.burstslowcapture.CameraTest.testCapturePictureWithScenesNight = 1
+script.burstslowcapture.CameraTest.testCapturePictureWithScenesLandscape = 1
+script.burstslowcapture.CameraTest.testCapturePictureWithScenesPortrait = 1
+script.burstslowcapture.CameraTest.testCapturePictureWithScenesNightPortrait = 1
+script.burstslowcapture.CameraTest.testCapturePictureWithScenesBarcode = 1
+script.burstslowcapture.CameraTest.testCapturePictureWithSizeWidescreen = 1
+script.burstslowcapture.CameraTest.testCapturePictureWithSizeStandard = 1
+script.burstslowcapture.CameraTest.testCapturepictureWithGeoLocationOn = 1
+script.burstslowcapture.CameraTest.testCapturepictureWithGeoLocationOff = 1
+
+
+
+
+
+
+
+
+
+
+
+

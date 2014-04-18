@@ -58,6 +58,9 @@ VIDEOSIZE_STATE = PATH_0_0XML + ' | grep pref_video_quality_key'
 #White balance state check point
 WBALANCE_STATE  = PATH_0_0XML + ' | grep pref_camera_whitebalance_key'
 
+#SCENE state check point
+SCENE_STATE     = PATH_0_0XML + ' | grep pref_camera_scenemode_key'
+
 class CameraTest(unittest.TestCase):
     def setUp(self):
         super(CameraTest,self).setUp()

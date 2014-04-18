@@ -61,6 +61,9 @@ WBALANCE_STATE  = PATH_0_0XML + ' | grep pref_camera_whitebalance_key'
 #Flash state check point
 FLASH_STATE     = PATH_0_0XML + ' | grep pref_camera_video_flashmode_key'
 
+#SCENE state check point
+SCENE_STATE     = PATH_0_0XML + ' | grep pref_camera_scenemode_key'
+
 class CameraTest(unittest.TestCase):
     def setUp(self):
         super(CameraTest,self).setUp()
@@ -248,6 +251,7 @@ class CameraTest(unittest.TestCase):
                 4.Exit  activity 
         '''
         SM.setCameraSetting('video',3,3)
+        # Need two check point due to the same value for video size when set HS/HD
         assert AD.cmd('cat',VIDEOSIZE_STATE).find('5')
         assert AD.cmd('cat',PATH_0_0XML + ' | grep enable-hightspeed').find('true')
         self._takeVideoAndCheckCount(30,2)
@@ -262,6 +266,7 @@ class CameraTest(unittest.TestCase):
                 4.Exit  activity 
         '''
         SM.setCameraSetting('video',3,2)
+        # Need two check point due to the same value for video size when set HS/HD
         assert AD.cmd('cat',VIDEOSIZE_STATE).find('5')
         assert AD.cmd('cat',PATH_0_0XML + ' | grep enable-hightspeed').find('false')
         self._takeVideoAndCheckCount(30,2)
@@ -277,7 +282,7 @@ class CameraTest(unittest.TestCase):
         '''
         SM.setCameraSetting('video',3,1)
         assert AD.cmd('cat',VIDEOSIZE_STATE).find('4')
-        assert AD.cmd('cat',PATH_0_0XML + ' | grep enable-hightspeed').find('false')
+        #assert AD.cmd('cat',PATH_0_0XML + ' | grep enable-hightspeed').find('false')
         self._takeVideoAndCheckCount(30,2)
 
     def testRecordVideoCaptureVideoWithFHDSize(self):
@@ -290,6 +295,7 @@ class CameraTest(unittest.TestCase):
                 4.Exit  activity 
         '''
         SM.setCameraSetting('video',3,4)
+        # Need two check point due to the same value for video size when set FHD/FHS
         assert AD.cmd('cat',VIDEOSIZE_STATE).find('6')
         assert AD.cmd('cat',PATH_0_0XML + ' | grep enable-hightspeed').find('false')
         self._takeVideoAndCheckCount(30,2)
@@ -304,31 +310,85 @@ class CameraTest(unittest.TestCase):
                 4.Exit  activity 
         '''
         SM.setCameraSetting('video',3,5)
+        # Need two check point due to the same value for video size when set FHD/FHS
         assert AD.cmd('cat',VIDEOSIZE_STATE).find('6')
         assert AD.cmd('cat',PATH_0_0XML + ' | grep enable-hightspeed').find('true')
         self._takeVideoAndCheckCount(30,2)
 
+    def testRecordVideoWithGeoLocationOn(self):
+        '''
+            Summary: Record an video in GeoLocation On
+            Steps  :  
+                1.Launch video activity
+                2.Check geo-tag ,set to ON
+                3.Touch shutter button to capture 30s video
+                4.Exit  activity 
+        '''
+        SM.setCameraSetting('video',2,2)
+        assert AD.cmd('cat',GEO_STATE).find('on')
+        self._takeVideoAndCheckCount(30,2)
 
+    def testRecordVideoWithGeoLocationOff(self):
+        '''
+            Summary: Record an video in GeoLocation Off
+            Steps  :  
+                1.Launch video activity
+                2.Check geo-tag ,set to Off
+                3.Touch shutter button to capture 30s video
+                4.Exit  activity 
+        '''
+        SM.setCameraSetting('video',2,1)
+        assert AD.cmd('cat',GEO_STATE).find('off')
+        self._takeVideoAndCheckCount(30,2)
 
+    def testRearFaceRecordVideoWithGeoLocationOn(self):
+        '''
+            Summary: Record an video with rear face camera and set GeoLocation On
+            Steps  :  
+                1.Launch video activity
+                2.Set to front face camera
+                3.Check geo-tag,set to ON
+                4.Touch shutter button to capture 30s video
+                5.Exit  activity
+        '''
+        TB.switchBackOrFrontCamera('front')
+        SM.setCameraSetting('fvideo',1,1)
+        assert AD.cmd('cat',GEO_STATE).find('on')
+        self._takeVideoAndCheckCount(30,2)
 
+    def testRearFaceRecordVideoWithGeoLocationOff(self):
+        '''
+            Summary: Record an video with rear face camera and set GeoLocation Off
+            Steps  :  
+                1.Launch video activity
+                2.Set to front face camera
+                3.Check geo-tag,set to Off
+                4.Touch shutter button to capture 30s video
+                5.Exit  activity
+        '''
+        TB.switchBackOrFrontCamera('front')
+        SM.setCameraSetting('fvideo',1,2)
+        assert AD.cmd('cat',GEO_STATE).find('off')
+        self._takeVideoAndCheckCount(30,2)
 
+    def testRecordVideoWithCaptureImage(self):
+        '''
+            Summary: Capture image when record video
+            Steps  :  
+                1.Launch video activity
+                2.Touch shutter button to capture 30s video
+                3.Touch screen to capture a picture during recording video
+                4.Exit  activity 
+        '''
+        #No setting to be changed
+        self._takeVideoAndCheckCount(30,2,5)
 
-
-
-
-
-
-
-
-
-
-
-    def _takeVideoAndCheckCount(self,recordtime,delaytime):
+    def _takeVideoAndCheckCount(self,recordtime,delaytime,capturetimes=0):
         beforeNo = AD.cmd('ls','/sdcard/DCIM/100ANDRO') #Get count before capturing
-        TB.takeVideo(recordtime)
+        TB.takeVideo(recordtime,capturetimes)
         time.sleep(delaytime) #Sleep a few seconds for file saving
         afterNo = AD.cmd('ls','/sdcard/DCIM/100ANDRO') #Get count after taking picture
-        if beforeNo != afterNo - 1: #If the count does not raise up after capturing, case failed
+        if beforeNo != afterNo - capturetimes - 1: #If the count does not raise up after capturing, case failed
             self.fail('Taking picture failed!')
 
     def _launchCamera(self):
