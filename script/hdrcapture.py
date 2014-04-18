@@ -111,7 +111,7 @@ class CameraTest(unittest.TestCase):
                 4.Exit  activity
         '''
         SM.setCameraSetting('hdr',2,2)
-        assert AD.cmd('cat',PICSIZE_STATE).find('StandardScreen')
+        assert bool(AD.cmd('cat',PICSIZE_STATE).find('StandardScreen')+1)
         self._captureAndCheckPicCount('single',2)
 
     def testCaptureWithPictureSizeWidesreen(self):
@@ -124,7 +124,7 @@ class CameraTest(unittest.TestCase):
                 4.Exit  activity
         '''
         SM.setCameraSetting('hdr',2,1)
-        assert AD.cmd('cat',PICSIZE_STATE).find('WideScreen')
+        assert bool(AD.cmd('cat',PICSIZE_STATE).find('WideScreen')+1)
         self._captureAndCheckPicCount('single',2)
 
     def testCapturepictureWithGeoLocationOn(self):
@@ -137,7 +137,7 @@ class CameraTest(unittest.TestCase):
                 4.Exit  activity
         '''
         SM.setCameraSetting('hdr',1,2)
-        assert AD.cmd('cat',GEO_STATE).find('on')
+        assert bool(AD.cmd('cat',GEO_STATE).find('on')+1)
         self._captureAndCheckPicCount('single',2)
 
     def testCapturepictureWithGeoLocationOff(self):
@@ -149,7 +149,7 @@ class CameraTest(unittest.TestCase):
                 4.Exit  activity
         """
         SM.setCameraSetting('hdr',1,1)
-        assert AD.cmd('cat',GEO_STATE).find('off')
+        assert bool(AD.cmd('cat',GEO_STATE).find('off')+1)
         self._captureAndCheckPicCount('single',2)
 
     def testCapturePictureWithSelfTimerOff(self):
@@ -161,7 +161,7 @@ class CameraTest(unittest.TestCase):
                 4.Exit  activity
         """
         SM.setCameraSetting('hdr',3,1)
-        assert AD.cmd('cat',TIMER_STATE).find('0')
+        assert bool(AD.cmd('cat',TIMER_STATE).find('0')+1)
         self._captureAndCheckPicCount('single',2)
 
     def testCapturePictureWithThreeSec(self):
@@ -173,7 +173,7 @@ class CameraTest(unittest.TestCase):
                 4.Exit  activity
         """
         SM.setCameraSetting('hdr',3,2)
-        assert AD.cmd('cat',TIMER_STATE).find('3')
+        assert bool(AD.cmd('cat',TIMER_STATE).find('3')+1)
         self._captureAndCheckPicCount('single',5)
 
     def testCapturePictureWithFiveSec(self):
@@ -185,7 +185,7 @@ class CameraTest(unittest.TestCase):
                 4.Exit  activity
         """
         SM.setCameraSetting('hdr',3,3)
-        assert AD.cmd('cat',TIMER_STATE).find('5')
+        assert bool(AD.cmd('cat',TIMER_STATE).find('5')+1)
         self._captureAndCheckPicCount('single',7)
 
     def testCapturePictureWithTenSec(self):
@@ -197,7 +197,7 @@ class CameraTest(unittest.TestCase):
                 4.Exit  activity
         """
         SM.setCameraSetting('hdr',3,4)
-        assert AD.cmd('cat',TIMER_STATE).find('10')
+        assert bool(AD.cmd('cat',TIMER_STATE).find('10')+1)
         self._captureAndCheckPicCount('single',12)
 
     def _captureAndCheckPicCount(self,capturemode,delaytime):
