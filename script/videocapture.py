@@ -91,7 +91,7 @@ class CameraTest(unittest.TestCase):
         '''
         SM.setCameraSetting('video','flash','on')
         assert bool(AD.cmd('cat',FLASH_STATE).find('on')+1)
-        self._takeVideoAndCheckCount(30,2)
+        self._takeVideoAndCheckCount()
 
     def testRecordVideoWithFlashOff(self):
         '''
@@ -104,7 +104,7 @@ class CameraTest(unittest.TestCase):
         '''
         SM.setCameraSetting('video','flash','off')
         assert bool(AD.cmd('cat',FLASH_STATE).find('off')+1)
-        self._takeVideoAndCheckCount(30,2)
+        self._takeVideoAndCheckCount()
 
     def testRecordVideoCaptureVideoWithBalanceAuto(self):
         '''
@@ -117,7 +117,7 @@ class CameraTest(unittest.TestCase):
         '''
         SM.setCameraSetting('video',5,5)
         assert bool(AD.cmd('cat',WBALANCE_STATE).find('auto')+1)
-        self._takeVideoAndCheckCount(30,2)
+        self._takeVideoAndCheckCount()
 
     def testRecordVideoCaptureVideoWithBalanceIncandescent(self):
         '''
@@ -130,7 +130,7 @@ class CameraTest(unittest.TestCase):
         '''
         SM.setCameraSetting('video',5,4)
         assert bool(AD.cmd('cat',WBALANCE_STATE).find('incandescent')+1)
-        self._takeVideoAndCheckCount(30,2)
+        self._takeVideoAndCheckCount()
 
     def testRecordVideoCaptureVideoWithBalanceDaylight(self):
         '''
@@ -143,7 +143,7 @@ class CameraTest(unittest.TestCase):
         '''
         SM.setCameraSetting('video',5,3)
         assert bool(AD.cmd('cat',WBALANCE_STATE).find('incandescent')+1)
-        self._takeVideoAndCheckCount(30,2)
+        self._takeVideoAndCheckCount()
 
     def testRecordVideoCaptureVideoWithBalanceFluorescent(self):
         '''
@@ -156,7 +156,7 @@ class CameraTest(unittest.TestCase):
         '''
         SM.setCameraSetting('video',5,2)
         assert bool(AD.cmd('cat',WBALANCE_STATE).find('fluorescent')+1)
-        self._takeVideoAndCheckCount(30,2)
+        self._takeVideoAndCheckCount()
 
     def testRecordVideoCaptureVideoWithBalanceCloudy(self):
         '''
@@ -169,7 +169,7 @@ class CameraTest(unittest.TestCase):
         '''
         SM.setCameraSetting('video',5,1)
         assert bool(AD.cmd('cat',WBALANCE_STATE).find('cloudy')+1)
-        self._takeVideoAndCheckCount(30,2)
+        self._takeVideoAndCheckCount()
 
     def testRecordVideoCaptureVideoWithExposureAuto(self):
         '''
@@ -183,7 +183,7 @@ class CameraTest(unittest.TestCase):
         '''
         SM.setCameraSetting('video',4,3)
         assert bool(AD.cmd('cat',EXPOSURE_STATE).find('0')+1)
-        self._takeVideoAndCheckCount(30,2)
+        self._takeVideoAndCheckCount()
 
     def testRecordVideoCaptureVideoWithExposure1(self):
         '''
@@ -197,7 +197,7 @@ class CameraTest(unittest.TestCase):
         '''
         SM.setCameraSetting('video',4,4)
         assert bool(AD.cmd('cat',EXPOSURE_STATE).find('3')+1)
-        self._takeVideoAndCheckCount(30,2)
+        self._takeVideoAndCheckCount()
 
     def testRecordVideoCaptureVideoWithExposure2(self):
         '''
@@ -211,7 +211,7 @@ class CameraTest(unittest.TestCase):
         '''
         SM.setCameraSetting('video',4,5)
         assert bool(AD.cmd('cat',EXPOSURE_STATE).find('6')+1)
-        self._takeVideoAndCheckCount(30,2)
+        self._takeVideoAndCheckCount()
 
     def testRecordVideoCaptureVideoWithExposureRed1(self):
         '''
@@ -225,7 +225,7 @@ class CameraTest(unittest.TestCase):
         '''
         SM.setCameraSetting('video',4,2)
         assert bool(AD.cmd('cat',EXPOSURE_STATE).find('-3')+1)
-        self._takeVideoAndCheckCount(30,2)
+        self._takeVideoAndCheckCount()
 
     def testRecordVideoCaptureVideoWithExposureRed2(self):
         '''
@@ -239,7 +239,7 @@ class CameraTest(unittest.TestCase):
         '''
         SM.setCameraSetting('video',4,1)
         assert bool(AD.cmd('cat',EXPOSURE_STATE).find('-6')+1)
-        self._takeVideoAndCheckCount(30,2)
+        self._takeVideoAndCheckCount()
 
     def testRecordVideoCaptureVideoWithHSSize(self):
         '''
@@ -254,7 +254,7 @@ class CameraTest(unittest.TestCase):
         # Need two check point due to the same value for video size when set HS/HD
         assert bool(AD.cmd('cat',VIDEOSIZE_STATE).find('5')+1)
         assert bool(AD.cmd('cat',PATH_0_0XML + ' | grep enable-hightspeed').find('true')+1)
-        self._takeVideoAndCheckCount(30,2)
+        self._takeVideoAndCheckCount()
 
     def testRecordVideoCaptureVideoWithHDSize(self):
         '''
@@ -269,7 +269,7 @@ class CameraTest(unittest.TestCase):
         # Need two check point due to the same value for video size when set HS/HD
         assert bool(AD.cmd('cat',VIDEOSIZE_STATE).find('5')+1)
         assert bool(AD.cmd('cat',PATH_0_0XML + ' | grep enable-hightspeed').find('false')+1)
-        self._takeVideoAndCheckCount(30,2)
+        self._takeVideoAndCheckCount()
 
     def testRecordVideoCaptureVideoWithSDSize(self):
         '''
@@ -283,7 +283,7 @@ class CameraTest(unittest.TestCase):
         SM.setCameraSetting('video',3,1)
         assert bool(AD.cmd('cat',VIDEOSIZE_STATE).find('4')+1)
         #assert bool(AD.cmd('cat',PATH_0_0XML + ' | grep enable-hightspeed').find('false')
-        self._takeVideoAndCheckCount(30,2)
+        self._takeVideoAndCheckCount()
 
     def testRecordVideoCaptureVideoWithFHDSize(self):
         '''
@@ -298,7 +298,7 @@ class CameraTest(unittest.TestCase):
         # Need two check point due to the same value for video size when set FHD/FHS
         assert bool(AD.cmd('cat',VIDEOSIZE_STATE).find('6')+1)
         assert bool(AD.cmd('cat',PATH_0_0XML + ' | grep enable-hightspeed').find('false')+1)
-        self._takeVideoAndCheckCount(30,2)
+        self._takeVideoAndCheckCount()
 
     def testRecordVideoCaptureVideoWithFHSSize(self):
         '''
@@ -313,7 +313,7 @@ class CameraTest(unittest.TestCase):
         # Need two check point due to the same value for video size when set FHD/FHS
         assert bool(AD.cmd('cat',VIDEOSIZE_STATE).find('6')+1)
         assert bool(AD.cmd('cat',PATH_0_0XML + ' | grep enable-hightspeed').find('true')+1)
-        self._takeVideoAndCheckCount(30,2)
+        self._takeVideoAndCheckCount()
 
     def testRecordVideoWithGeoLocationOn(self):
         '''
@@ -326,7 +326,7 @@ class CameraTest(unittest.TestCase):
         '''
         SM.setCameraSetting('video',2,2)
         assert bool(AD.cmd('cat',GEO_STATE).find('on')+1)
-        self._takeVideoAndCheckCount(30,2)
+        self._takeVideoAndCheckCount()
 
     def testRecordVideoWithGeoLocationOff(self):
         '''
@@ -339,7 +339,7 @@ class CameraTest(unittest.TestCase):
         '''
         SM.setCameraSetting('video',2,1)
         assert bool(AD.cmd('cat',GEO_STATE).find('off')+1)
-        self._takeVideoAndCheckCount(30,2)
+        self._takeVideoAndCheckCount()
 
     def testRearFaceRecordVideoWithGeoLocationOn(self):
         '''
@@ -354,7 +354,7 @@ class CameraTest(unittest.TestCase):
         TB.switchBackOrFrontCamera('front')
         SM.setCameraSetting('fvideo',1,1)
         assert bool(AD.cmd('cat',GEO_STATE).find('on')+1)
-        self._takeVideoAndCheckCount(30,2)
+        self._takeVideoAndCheckCount()
 
     def testRearFaceRecordVideoWithGeoLocationOff(self):
         '''
@@ -369,7 +369,7 @@ class CameraTest(unittest.TestCase):
         TB.switchBackOrFrontCamera('front')
         SM.setCameraSetting('fvideo',1,2)
         assert bool(AD.cmd('cat',GEO_STATE).find('off')+1)
-        self._takeVideoAndCheckCount(30,2)
+        self._takeVideoAndCheckCount()
 
     def testRecordVideoWithCaptureImage(self):
         '''
@@ -381,9 +381,9 @@ class CameraTest(unittest.TestCase):
                 4.Exit  activity 
         '''
         #No setting to be changed
-        self._takeVideoAndCheckCount(30,2,5)
+        self._takeVideoAndCheckCount(capturetimes=5)
 
-    def _takeVideoAndCheckCount(self,recordtime,delaytime,capturetimes=0):
+    def _takeVideoAndCheckCount(self,recordtime=30,delaytime=2,capturetimes=0):
         beforeNo = AD.cmd('ls','/sdcard/DCIM/100ANDRO') #Get count before capturing
         TB.takeVideo(recordtime,capturetimes)
         time.sleep(delaytime) #Sleep a few seconds for file saving
